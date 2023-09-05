@@ -12,28 +12,25 @@ import com.latam.alura.hotel.utils.JPAUtils;
 
 public class testUsuarios {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+	public static void main(String[] args) {		// TODO Auto-generated method stub
 		
-		 EntityManager em = JPAUtils.getEntityManager();
+		EntityManager em = JPAUtils.getEntityManager();
 
-	     em.getTransaction().begin();
+		em.getTransaction().begin();
 
-	     UsuariosDao usuariosDao = new UsuariosDao(em);
+		UsuariosDao usuariosDao = new UsuariosDao(em);
 
-	     // Create a new user instance
-		 Usuarios newUser = new Usuarios();
-		  
-		 //Crear Usuarios Nuevos
-		 newUser.setId(4);
-		 newUser.setNombre("Admin");
-		 newUser.setContrasenia("1234"); // Set the plaintext password
-	
-		 // Save the new user with the hashed password
-		 usuariosDao.save(newUser);
-	     em.getTransaction().commit();
-	     em.close();
+		// Create a new user instance
+		Usuarios newUser = new Usuarios();
+		
+		//Crear Usuarios Nuevos
+		newUser.setId(2);
+		newUser.setNombre("admin");
+		newUser.setcontrasena("1234");
 
+		// Save the new user with the hashed password
+		usuariosDao.save(newUser);	
+		em.getTransaction().commit();
+		em.close();
 	}
-
 }

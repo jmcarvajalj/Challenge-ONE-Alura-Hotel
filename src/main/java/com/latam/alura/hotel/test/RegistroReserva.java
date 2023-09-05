@@ -17,13 +17,14 @@ import com.latam.alura.hotel.utils.JPAUtils;
 public class RegistroReserva {
 
 	public static void main(String[] args) {
+		
         EntityManager em = JPAUtils.getEntityManager();
 
         em.getTransaction().begin();
 
         ReservasDao reservasDao = new ReservasDao(em);
-        List<Reserva> reservas = reservasDao.getAll();
 
+        List<Reserva> reservas = reservasDao.getAll();
         reservas.forEach(reserva -> System.out.println(reserva.getFormaPago()));
         em.getTransaction().commit();
         em.close();

@@ -87,8 +87,7 @@ public class RegistroHuesped extends JFrame {
 		header.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				headerMouseDragged(e);
-			     
+				headerMouseDragged(e);			     
 			}
 		});
 		header.addMouseListener(new MouseAdapter() {
@@ -317,8 +316,8 @@ public class RegistroHuesped extends JFrame {
 			}			
 			@Override
 			public void mouseExited(MouseEvent e) {
-				btnexit.setBackground(Color.white);
-			    labelExit.setForeground(Color.black);
+				 btnexit.setBackground(Color.white);
+			     labelExit.setForeground(Color.black);
 			}
 		});
 		btnexit.setLayout(null);
@@ -334,7 +333,7 @@ public class RegistroHuesped extends JFrame {
 	
 	
 	//Código que permite mover la ventana por la pantalla según la posición de "x" y "y"	
-	 private void headerMousePressed(java.awt.event.MouseEvent evt) {
+	private void headerMousePressed(java.awt.event.MouseEvent evt) {
 	        xMouse = evt.getX();
 	        yMouse = evt.getY();
 	    }
@@ -392,5 +391,6 @@ public class RegistroHuesped extends JFrame {
 	            JOptionPane.showMessageDialog(null, "Error al guardar la reserva.");
 	            em.getTransaction().rollback();
 	        }
-	    }											
+	    }
+											
 }

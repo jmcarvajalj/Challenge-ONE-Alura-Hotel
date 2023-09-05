@@ -54,7 +54,7 @@ public class Busqueda extends JFrame {
 	private DefaultTableModel modeloHuespedes;
 	private Map<JTable, DefaultTableModel> modelosDeTabla = new HashMap<>();
 	private JTabbedPane tabbedPane;
-	private int currentTab = 0; // Índice de la primera pestaña por defecto
+	private int currentTab = 0;
 	private JPanel contentPane;
 	private JTextField txtBuscar;
 	private JTable tbHuespedes;
@@ -101,8 +101,8 @@ public class Busqueda extends JFrame {
 		txtBuscar.setBounds(536, 127, 193, 31);
 		txtBuscar.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		contentPane.add(txtBuscar);
-		txtBuscar.setColumns(10);		
-		
+		txtBuscar.setColumns(10);
+
 		JLabel lblNewLabel_4 = new JLabel("SISTEMA DE BÚSQUEDA");
 		lblNewLabel_4.setForeground(new Color(12, 138, 199));
 		lblNewLabel_4.setFont(new Font("Roboto Black", Font.BOLD, 24));
@@ -125,14 +125,14 @@ public class Busqueda extends JFrame {
 		modeloReservas.addColumn("Valor");
 		modeloReservas.addColumn("Forma de Pago");
 		tbReservas.setModel(modeloReservas);
-		modelosDeTabla.put(tbReservas, modeloReservas); // Agrega el modelo al mapa		
+		modelosDeTabla.put(tbReservas, modeloReservas);		
 
 		JScrollPane scroll_table = new JScrollPane(tbReservas);
 		panel.addTab("Reservas", new ImageIcon(Busqueda.class.getResource("/imagenes/reservado.png")), scroll_table, null);
 		scroll_table.setVisible(true);
 
-		GetAllDataReservas(); // Llena el modelo de reservas con los datos al cargar la interfaz		
-		
+		GetAllDataReservas();
+
 		tbHuespedes = new JTable();
 		tbHuespedes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tbHuespedes.setFont(new Font("Roboto", Font.PLAIN, 16));
@@ -145,7 +145,7 @@ public class Busqueda extends JFrame {
 		modeloHuespedes.addColumn("Telefono");
 		modeloHuespedes.addColumn("Número de Reserva");
 		tbHuespedes.setModel(modeloHuespedes);
-		modelosDeTabla.put(tbHuespedes, modeloHuesped); // Agrega el modelo al mapa
+		modelosDeTabla.put(tbHuespedes, modeloHuesped);
 		
 		JScrollPane scroll_tableHuespedes = new JScrollPane(tbHuespedes);
 		panel.addTab("Huéspedes", new ImageIcon(Busqueda.class.getResource("/imagenes/pessoas.png")), scroll_tableHuespedes, null);
@@ -198,7 +198,7 @@ public class Busqueda extends JFrame {
 			@Override
 			public void mouseExited(MouseEvent e) {
 				btnAtras.setBackground(Color.white);
-				labelAtras.setForeground(Color.black);
+			    labelAtras.setForeground(Color.black);
 			}
 		});
 
@@ -229,7 +229,7 @@ public class Busqueda extends JFrame {
 			@Override
 			public void mouseExited(MouseEvent e) { //Al usuario quitar el mouse por el botón este volverá al estado original
 				btnexit.setBackground(Color.white);
-				labelExit.setForeground(Color.black);
+			    labelExit.setForeground(Color.black);
 			}
 		});
 
@@ -253,10 +253,10 @@ public class Busqueda extends JFrame {
 		
 		JPanel btnbuscar = new JPanel();
 		btnbuscar.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				if (currentTab == 0) {
-		    		filterReservas();
+		    @Override
+		    public void mouseClicked(MouseEvent e) {
+		        if (currentTab == 0) {
+		            filterReservas();
 		        } else if (currentTab == 1) {
 		            filterHuespedes();
 		        }
@@ -304,6 +304,7 @@ public class Busqueda extends JFrame {
 		        }
 			}
 		});
+
 		lblEditar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEditar.setForeground(Color.WHITE);
 		lblEditar.setFont(new Font("Roboto", Font.PLAIN, 18));
@@ -337,6 +338,7 @@ public class Busqueda extends JFrame {
 		        }
 			}
 		});
+
 		lblEliminar.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEliminar.setForeground(Color.WHITE);
 		lblEliminar.setFont(new Font("Roboto", Font.PLAIN, 18));
@@ -345,7 +347,6 @@ public class Busqueda extends JFrame {
 		setResizable(false);
 	}
 	
-//Código que permite mover la ventana por la pantalla según la posición de "x" y "y"
 	private void headerMousePressed(java.awt.event.MouseEvent evt) {
 	        xMouse = evt.getX();
 	        yMouse = evt.getY();
@@ -356,7 +357,7 @@ public class Busqueda extends JFrame {
 	        int y = evt.getYOnScreen();
 	        this.setLocation(x - xMouse, y - yMouse);
 	    }
-	    
+
 	    public void GetAllDataReservas() {
 	        EntityManager em = JPAUtils.getEntityManager();
 	        
@@ -476,6 +477,7 @@ public class Busqueda extends JFrame {
 	        em.getTransaction().commit();
 	        em.close();
 	    }
+
 	    public void updateHuesped(int rowIndex) {
 	        EntityManager em = JPAUtils.getEntityManager();
 	        try {

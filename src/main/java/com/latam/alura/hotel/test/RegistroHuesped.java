@@ -13,17 +13,16 @@ public class RegistroHuesped {
 
 	public static void main(String[] args) {
 		
-	    // buscar por id
-	    EntityManager em = JPAUtils.getEntityManager();
+		EntityManager em = JPAUtils.getEntityManager();
 
 		em.getTransaction().begin();
 		
 		HuespedesDao huespedDao = new HuespedesDao(em);
-		
+
 		List<Huesped> huespedes = huespedDao.consultaPorColumnas("Test");
 		huespedes.forEach(prod -> System.out.println(prod.getApellido()));
 		
-	    em.getTransaction().commit();
-	    em.close();		
+		em.getTransaction().commit();
+		em.close();		
 	}
 }

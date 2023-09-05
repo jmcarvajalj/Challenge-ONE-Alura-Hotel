@@ -18,8 +18,7 @@ public class HuespedesDao {
 	
 	public void guardar(Huesped huesped) {
 		this.em.persist(huesped);
-	}
-	
+	}	
 
 	public void  update(Huesped huesped) {
 		em.merge(huesped);
@@ -34,22 +33,19 @@ public class HuespedesDao {
     }
     
     public List<Huesped> getAll(){
-    	String jpql = "SELECT h FROM Huesped h"; 
-    	return em.createQuery(jpql, Huesped.class).getResultList();
-    	
+        String jpql = "SELECT h FROM Huesped h"; 
+        return em.createQuery(jpql, Huesped.class).getResultList();    	
     }
     
     public List<Huesped> consultaPorColumnas(String nombre){
         String jpql = "SELECT P FROM Huesped P WHERE P.nombre LIKE :nombre " +
-                      "OR P.apellido LIKE :nombre " +
-                      "OR P.nacionalidad LIKE :nombre " +
-                      "OR P.id LIKE :nombre " +
-                      "OR P.telefono LIKE :nombre";
+                        "OR P.apellido LIKE :nombre " +
+                        "OR P.nacionalidad LIKE :nombre " +
+                        "OR P.id LIKE :nombre " +
+                        "OR P.telefono LIKE :nombre";
+
         return em.createQuery(jpql, Huesped.class)
-                 .setParameter("nombre", "%" + nombre + "%") // Agrega % al principio y al final para buscar coincidencias parciales
-                 .getResultList();
+                .setParameter("nombre", "%" + nombre + "%")
+                .getResultList();
     }
-
-
-
 }

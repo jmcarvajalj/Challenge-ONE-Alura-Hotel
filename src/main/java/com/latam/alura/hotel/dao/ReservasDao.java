@@ -45,49 +45,42 @@ public class ReservasDao {
 	
 	public List<Reserva> consultaPorBusqueda(String entrada) {
 		String jpql = "SELECT h FROM Reserva h WHERE " +
-		                "(YEAR(h.fechaEntrada) = :ano OR " +
+		            	"(YEAR(h.fechaEntrada) = :ano OR " +
 		                "YEAR(h.fechaSalida) = :ano OR " +
 		                "h.valor = :valor OR " +
 		                "h.formaPago LIKE :formaPago OR " +
-		                "CAST(h.id AS string) = :id)";
-		  
-		  TypedQuery<Reserva> query = em.createQuery(jpql, Reserva.class);
-		  
-		  int ano = -1;
-		  BigDecimal valor = null;
-		  String formaPago = null;
-		  String idString = null;
-		  
-		  try {
-		      ano = Integer.parseInt(entrada);
-		  } catch (NumberFormatException e) {
-		      // Ignore the exception if parsing as integer fails
-		  }
-		  
-		  try {
-		      valor = new BigDecimal(entrada);
-		  } catch (NumberFormatException e) {
-		      // Ignore the exception if parsing as BigDecimal fails
-		  }
-		  
-		  try {
-		      idString = entrada;
-		  } catch (NumberFormatException e) {
-		      // Ignore the exception if parsing as String fails
-		  }
-		  
-		  query.setParameter("ano", ano);
-		  query.setParameter("valor", valor);
-		  query.setParameter("formaPago", "%" + entrada + "%");
-		  query.setParameter("id", idString);
-		  
-		  return query.getResultList();
+						"CAST(h.id AS string) = :id)";
+		
+		TypedQuery<Reserva> query = em.createQuery(jpql, Reserva.class);
+		
+		int ano = -1;
+		BigDecimal valor = null;
+		String formaPago = null;
+		String idString = null;
+		
+		try {
+			ano = Integer.parseInt(entrada);
+		} catch (NumberFormatException e) {
+			// Ignore the exception if parsing as integer fails
+		}
+		
+		try {
+			valor = new BigDecimal(entrada);
+		} catch (NumberFormatException e) {
+			// Ignore the exception if parsing as BigDecimal fails
+		}
+		
+		try {
+			idString = entrada;
+		} catch (NumberFormatException e) {
+			// Ignore the exception if parsing as String fails
+		}
+		
+		query.setParameter("ano", ano);
+		query.setParameter("valor", valor);
+		query.setParameter("formaPago", "%" + entrada + "%");
+		query.setParameter("id", idString);
+		
+		return query.getResultList();
 	}
-
-
-
-
-
-	
-
 }

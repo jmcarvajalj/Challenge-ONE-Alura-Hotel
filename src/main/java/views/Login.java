@@ -24,7 +24,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 
 public class Login extends JFrame {
-
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField txtUsuario;
@@ -60,8 +62,7 @@ public class Login extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		setLocationRelativeTo(null);
-		
+		setLocationRelativeTo(null);		
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 788, 527);
@@ -95,8 +96,8 @@ public class Login extends JFrame {
 			}			
 			@Override
 			public void mouseExited(MouseEvent e) {
-				 btnexit.setBackground(new Color(12, 138, 199));
-			     labelExit.setForeground(Color.white);
+				btnexit.setBackground(new Color(12, 138, 199));
+			    labelExit.setForeground(Color.white);
 			}
 		});
 		btnexit.setBackground(new Color(12, 138, 199));
@@ -114,14 +115,14 @@ public class Login extends JFrame {
 		txtUsuario.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
-				 if (txtUsuario.getText().equals("Ingrese su nombre de usuario")) {
-					 txtUsuario.setText("");
-					 txtUsuario.setForeground(Color.black);
-			        }
-			        if (String.valueOf(txtContrasena.getPassword()).isEmpty()) {
-			        	txtContrasena.setText("********");
-			        	txtContrasena.setForeground(Color.gray);
-			        }
+				if (txtUsuario.getText().equals("Ingrese su nombre de usuario")) {
+					txtUsuario.setText("");
+					txtUsuario.setForeground(Color.black);
+				}
+				if (String.valueOf(txtContrasena.getPassword()).isEmpty()) {
+					txtContrasena.setText("********");
+					txtContrasena.setForeground(Color.gray);
+				}
 			}
 		});
 		txtUsuario.setFont(new Font("Roboto", Font.PLAIN, 16));
@@ -240,8 +241,8 @@ public class Login extends JFrame {
 	    String enteredPassword = new String(txtContrasena.getPassword());
 	    EntityManager em = JPAUtils.getEntityManager();
 
-	     em.getTransaction().begin();
-	     UsuariosDao usuDao = new UsuariosDao(em);
+	    em.getTransaction().begin();
+	    UsuariosDao usuDao = new UsuariosDao(em);
 	    // Assuming the UsuariosDao method for checking credentials
 	    boolean isValidLogin = usuDao.checkCredentials(enteredUsername, enteredPassword);
 	    em.getTransaction().commit();
@@ -255,7 +256,8 @@ public class Login extends JFrame {
 	        JOptionPane.showMessageDialog(this, "Usuario o Contraseña no válidos");
 	    }
 	} 
-	 private void headerMousePressed(java.awt.event.MouseEvent evt) {
+	
+	private void headerMousePressed(java.awt.event.MouseEvent evt) {
 	        xMouse = evt.getX();
 	        yMouse = evt.getY();
 	    }//GEN-LAST:event_headerMousePressed

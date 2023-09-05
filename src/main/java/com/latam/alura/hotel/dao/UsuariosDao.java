@@ -32,50 +32,50 @@ public class UsuariosDao {
         return em.find(Usuarios.class, id);
     }
 	public void eliminar(Usuarios usuario) {
-	    em.remove(usuario);
+		em.remove(usuario);
 	}
 
 	public void save(Usuarios usuario) {
-	    String hashedPassword = hashPassword(usuario.getContrasenia());
-	    usuario.setContrasenia(hashedPassword);
-	    em.persist(usuario);
+		String hashedPassword = hashPassword(usuario.getcontrasena());
+		usuario.setcontrasena(hashedPassword);
+		em.persist(usuario);
 	}
 
 	public boolean checkCredentials(String username, String password) {
-	    String jpql = "SELECT u FROM Usuarios u WHERE u.nombre = :username";
-	    TypedQuery<Usuarios> query = em.createQuery(jpql, Usuarios.class)
-	            .setParameter("username", username);
+		String jpql = "SELECT u FROM Usuarios u WHERE u.nombre = :username";
+		TypedQuery<Usuarios> query = em.createQuery(jpql, Usuarios.class)
+				.setParameter("username", username);
 
-	    List<Usuarios> users = query.getResultList();
+		List<Usuarios> users = query.getResultList();
 
-	    if (!users.isEmpty()) {
-	        Usuarios user = users.get(0);
-	        return checkPassword(password, user.getContrasenia());
-	    }
-	    return false;
+		if (!users.isEmpty()) {
+			Usuarios user = users.get(0);
+			return checkPassword(password, user.getcontrasena());
+		}
+		return false;
 	}
 
 	private String hashPassword(String password) {
-	    try {
-	        MessageDigest md = MessageDigest.getInstance("SHA-256");
-	        byte[] hashBytes = md.digest(password.getBytes());
+		try {
+			MessageDigest md = MessageDigest.getInstance("SHA-256");
+			byte[] hashBytes = md.digest(password.getBytes());
 
-	        StringBuilder hexString = new StringBuilder();
-	        for (byte b : hashBytes) {
-	            String hex = Integer.toHexString(0xff & b);
-	            if (hex.length() == 1) hexString.append('0');
-	            hexString.append(hex);
-	        }
+			StringBuilder hexString = new StringBuilder();
+			for (byte b : hashBytes) {
+				String hex = Integer.toHexString(0xff & b);
+				if (hex.length() == 1) hexString.append('0');
+				hexString.append(hex);
+			}
 
-	        return hexString.toString();
-	    } catch (NoSuchAlgorithmException e) {
-	        e.printStackTrace();
-	        return null;
-	    }
+			return hexString.toString();
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	private boolean checkPassword(String inputPassword, String storedHash) {
-	    String hashedInput = hashPassword(inputPassword);
-	    return hashedInput != null && hashedInput.equals(storedHash);
+		String hashedInput = hashPassword(inputPassword);
+		return hashedInput != null && hashedInput.equals(storedHash);
 	}
 }

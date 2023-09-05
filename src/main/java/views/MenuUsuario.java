@@ -212,7 +212,7 @@ public class MenuUsuario extends JFrame {
 	    String textoDescripcion = "<html><body>Sistema de reserva de hotel. Controle y administre de forma óptima y fácil <br> el flujo de reservas y de huespédes del hotel   </body></html>";
 	    JLabel labelDescripcion = new JLabel(textoDescripcion);
 	    labelDescripcion.setFont(new Font("Roboto", Font.PLAIN, 17));
-	   
+	    
 	    labelDescripcion.setBounds(312, 291, 598, 66);
 	    contentPane.add(labelDescripcion);
 	    
