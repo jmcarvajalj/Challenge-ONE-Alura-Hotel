@@ -42,7 +42,7 @@ CREATE TABLE `huespedes` (
 
 LOCK TABLES `huespedes` WRITE;
 /*!40000 ALTER TABLE `huespedes` DISABLE KEYS */;
-INSERT INTO `huespedes` VALUES (1,'Jose','Carvajal','2022-01-01','Colombiano',1,'2519779');
+INSERT INTO `huespedes` VALUES (1,'Jose','Carvajal','2022-01-01','colombiano-colombiana',1,'2519779');
 /*!40000 ALTER TABLE `huespedes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,7 +69,7 @@ CREATE TABLE `reservas` (
 
 LOCK TABLES `reservas` WRITE;
 /*!40000 ALTER TABLE `reservas` DISABLE KEYS */;
-INSERT INTO `reservas` VALUES (1,'2023-01-01','2023-01-05',12.0000,'debito');
+INSERT INTO `reservas` VALUES (1,'2023-01-01','2023-01-04',60.0000,'debito');
 /*!40000 ALTER TABLE `reservas` ENABLE KEYS */;
 UNLOCK TABLES;
 

@@ -25,7 +25,7 @@ public class testUsuarios {
 		
 		//Crear Usuarios Nuevos
 		newUser.setId(2);
-		newUser.setNombre("admin");
+		newUser.setNombre("testUser");
 		newUser.setcontrasena("1234");
 
 		// Save the new user with the hashed password
