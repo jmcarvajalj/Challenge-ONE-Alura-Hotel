@@ -10,7 +10,7 @@
 
 Este proyecto hace parte del tercer challenge del curso de Oracle Next Education.
 
-Consiste en la creación de un proyecto que imita un sistema de reservaciones de un hotel utilizando el lenguaje Java. Las características solicitadas por nuestro cliente son las siguientes:
+El challenge consiste en la creación de un sistema de reservaciones de un hotel utilizando el lenguaje Java. Las características solicitadas por nuestro cliente son las siguientes:
 
 1. Sistema de autenticación de usuario para que solo usuarios pertenecientes al hotel consigan acceder al sistema;
 
